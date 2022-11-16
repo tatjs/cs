@@ -1,0 +1,50 @@
+
+//Fibonacci using recursive method
+
+#include<iostream>
+using namespace std;
+
+int fib(int num)
+{
+    if(num<=1)
+    {
+        return num;
+    }
+    return fib(num-1)+fib(num-2);
+}
+
+int main()
+{
+    int num;
+    cin>>num;
+
+    cout<<fib(num);
+    
+    return 0 ;
+}
+
+-------------------------------------------------
+//Fibonacci using non-recursive method
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int num;
+    cin>>num;
+
+    int a,b,c;
+    a=1;
+    b=1;
+    cout<<a<<" "<<b;
+
+    for(int i=2;i<num;i++)
+    {
+        c=a+b;
+        cout<<" "<<c<<" ";
+        a=b;
+        b=c;
+    }
+    return 0;
+}
