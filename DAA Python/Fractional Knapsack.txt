@@ -1,0 +1,51 @@
+
+n= int(input("Enter the no. of items: "))
+p=list(map(int,input("Enter the profits of items: ").split()))
+w=list(map(int,input("Enter the weights of items: ").split()))
+m= int(input("Enter the capacity: "))
+
+def frac_knap(w,p,m):
+  # find ratios of (profit/weight)
+  r=[]
+  for i in range(n):
+    r.append(p[i]/w[i]) 
+  r=sorted(r,reverse=True)  # arrange it in a descending order
+
+  # array of indices in descending order according to ratios
+  ind=[0]
+  ind=ind*n
+  for i in range(n):
+    for j in range(n):
+      if(p[i]/w[i]==r[j]):
+        ind[i]=j
+  
+  # new profit array acc to ratios array
+  new_p=[0]
+  new_p=new_p*n
+  for i in range(n):
+    new_p[ind[i]]=p[i]
+
+  # new weight array acc to ratios array
+  new_w=[0]
+  new_w=new_w*n
+  for i in range(n):
+    new_w[ind[i]]=w[i]
+
+  # result value
+  res=0.0
+  
+  for i in range(n):
+    # add whole item
+    if(new_w[i]<=m):
+      m-=new_w[i]  
+      res+=new_p[i]
+  
+    # add fractional part of item
+    else:
+      res+=new_p[i]*m/new_w[ind[i]]
+      break
+    
+  return res
+
+frac_knap(w,p,m)
+

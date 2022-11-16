@@ -1,0 +1,31 @@
+# Non-recursive fibonacci
+n=int(input())
+a=0
+b=1
+
+if(n==1):
+  print(a)
+else:
+  print(a)
+  print(b)
+  for i in range(n-2):
+    c=a+b
+    print(c)
+    a=b
+    b=c
+
+# Recursve fibonacci
+def fibonacci_recursion(n):
+   if n <= 1:
+      return n
+   else:
+      return(fibonacci_recursion(n-1) + fibonacci_recursion(n-2))
+n=int(input())
+
+if n <= 0:
+   print("Enter a positive integer...")
+else:
+   print("The Fibonacci sequence is :")
+   for i in range(n):
+      print(fibonacci_recursion(i))
+
